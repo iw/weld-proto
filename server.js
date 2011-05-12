@@ -1,4 +1,4 @@
-
+  
 var connect = require('connect'),
     escort  = require('escort'),
     jsdom   = require('jsdom'),
@@ -6,12 +6,12 @@ var connect = require('connect'),
 
 function renderHome(req, res) {
   jsdom.env({
-    scripts : [
+    scripts: [
       './public/scripts/jquery-1.5.2.min.js',
       require('weld').filepath
     ],
-    html : './public/index.html'
-  }, function(errors, window) {
+    html: './public/index.html'
+  }, function (errors, window) {
     var $ = window.jQuery;
     // window.weld($('title')[0], 'Welded node', { debug : true });
     window.weld($('title')[0], 'Welded node');
@@ -29,7 +29,7 @@ function renderHome(req, res) {
 }
 
 connect(
-  escort(function(routes) {
+  escort(function (routes) {
     routes.get("/", renderHome);
   })
 ).listen(8000);
