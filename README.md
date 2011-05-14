@@ -32,6 +32,7 @@ The following dependencies are currently required:
 * [escort](https://github.com/ckknight/escort)
 * [uri](https://github.com/garycourt/uri-js)
 * [node_redis](https://github.com/mranney/node_redis/)
+* [underscore](https://github.com/documentcloud/underscore/)
 
 Install:
 
@@ -40,7 +41,8 @@ Install:
     $ npm install connect
     $ npm install escort
     $ npm install https://github.com/garycourt/uri-js/tarball/master
-    $ npm install hiredis redis 
+    $ npm install hiredis redis
+    $ npm install underscore
 
 Performing `npm ls` currently provides:
 
@@ -50,12 +52,16 @@ Performing `npm ls` currently provides:
 │ └── qs@0.1.0 
 ├── escort@0.0.13 
 ├── hiredis@0.1.10 
+├─┬ jsdom@0.2.0 
+│ ├── htmlparser@1.7.3 
+│ └── request@1.9.5 
 ├── redis@0.6.0 
+├── underscore@1.1.6 
 ├── uri-js@1.2.0 
 └─┬ weld@0.2.0 
   ├── colors@0.5.0 
   └─┬ jsdom@0.2.0 
     ├── htmlparser@1.7.3 
-    └── request@1.9.5
+    └── request@1.9.5 
 ```
     
