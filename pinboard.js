@@ -2,7 +2,8 @@
 var redis = require('redis'),
     repo = redis.createClient(),
     jsdom = require('jsdom'),
-    URI = require("uri").URI;
+    URI = require('uri-js').URI,
+    path = require('path');
 
 var DELAY_PERIOD = 1000 * 60 * 60;
 
@@ -31,7 +32,7 @@ function obtainResources(repo) {
       var pinboard = 'http://pinboard.in/t:' + tag + '/';
 
       jsdom.env(pinboard, [
-        './public/scripts/jquery-1.5.2.min.js'
+        path.join(__dirname, 'public', 'scripts', 'jquery-1.5.2.min.js')
       ], function (errors, window) {
         if (errors) {
           console.warn('Unable to obtain the pinboard:', errors);
@@ -40,7 +41,7 @@ function obtainResources(repo) {
             var bookmark = window.$(this);
             
             var resource = URI.normalize(bookmark.attr('href'));
-            var title = bookmark.text;
+            var title = bookmark.html();
             // <a class="when" href="/u:.../b:..."
             // title="2011.05.11 &nbsp; 14:44:49">1 hour ago</a>
             var when = bookmark.nextAll('a[class="when"]').attr('title');
@@ -48,14 +49,16 @@ function obtainResources(repo) {
             var d = parseDate(bookmarked);
 
             var k = 'pinboard:tag:' + tag + ':' + d.getTime();
-            var v = resource + '/' + title.trim();
+            var v = resource + ' ' + title.trim();
 
+            console.log('Adding', v, 'to', k);
             repo.sadd(k, v);
           });
         }
       });
     });
   });
-};
+}
 
-setInterval(obtainResources, DELAY_PERIOD, repo);
+// setInterval(obtainResources, DELAY_PERIOD, repo);
+obtainResources(repo);

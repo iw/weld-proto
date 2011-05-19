@@ -1,11 +1,26 @@
   
 var path = require('path'),
     jsdom = require('jsdom'),
-    weld = require('weld'),
-    _ = require('underscore');
+    util = require('util');
+
+var TEMPLATE_EXTENSION = '.html';
+var WELDER_EXTENSION   = '.welder.js';
 
 var Template = function (name) {
-  this.template = path.join(__dirname, 'public', name);
+  this.template = path.join(__dirname, 'public', name + TEMPLATE_EXTENSION);
+  var welderPath = path.join(__dirname, 'public', name + WELDER_EXTENSION);
+
+  if (!path.existsSync(this.template)) {
+    // Handle exception
+    util.debug('Template is missing:', this.template);
+  }
+
+  if (!path.existsSync(welderPath)) {
+    // Handle exception
+    util.debug('Welder is missing:', welderPath);
+  }
+
+  this.welder = require(welderPath);
 }
 
 Template.prototype.render = function (content, res) {
@@ -25,11 +40,7 @@ Template.prototype.render = function (content, res) {
 }
 
 Template.prototype.bind = function(window, $, content) {
-  _(content).each(function (selectorAndValues, aspect) {
-    _(selectorAndValues).each(function (values, selector) {
-      window.weld($(selector)[0], values);
-    });
-  });
+  this.welder.bind(window, $, content);
 }
 
 Template.prototype.write = function($, res) {

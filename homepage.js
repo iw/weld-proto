@@ -15,7 +15,7 @@ HomePage.prototype.initialize = function () {
 }
 
 HomePage.prototype.getTemplate = function () {
-  return new Template('index.html');
+  return new Template('index');
 }
 
 exports.HomePage = HomePage;
