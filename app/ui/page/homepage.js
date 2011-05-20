@@ -2,7 +2,7 @@
 var util = require('util'),
     Page = require('./page').Page,
     Template = require('./template').Template,
-    HomeModule = require('./homemodule').HomeModule;
+    HomeModule = require('../module/homemodule').HomeModule;
 
 var HomePage = function () {
   HomePage.super_.call(this);

@@ -7,16 +7,18 @@ var TEMPLATE_EXTENSION = '.html';
 var WELDER_EXTENSION   = '.welder.js';
 
 var Template = function (name) {
-  this.template = path.join(__dirname, 'public', name + TEMPLATE_EXTENSION);
-  var welderPath = path.join(__dirname, 'public', name + WELDER_EXTENSION);
+  this.template =
+    path.join(__dirname, '..', '..', '..', 'priv', 'template', name + TEMPLATE_EXTENSION);
+  var welderPath =
+    path.join(__dirname, '..', '..', '..', 'priv', 'template', name + WELDER_EXTENSION);
 
   if (!path.existsSync(this.template)) {
-    // Handle exception
+    //TODO Handle exception
     util.debug('Template is missing:', this.template);
   }
 
   if (!path.existsSync(welderPath)) {
-    // Handle exception
+    //TODO Handle exception
     util.debug('Welder is missing:', welderPath);
   }
 
@@ -28,7 +30,7 @@ Template.prototype.render = function (content, res) {
 
   jsdom.env({
     scripts: [
-      path.join(__dirname, 'public', 'scripts', 'jquery-1.5.2.min.js'),
+      path.join(__dirname, '..', '..', '..', 'public', 'script', 'jquery-1.5.2.min.js'),
       require('weld').filepath
     ],
     html: this.template,

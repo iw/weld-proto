@@ -3,10 +3,10 @@ var connect = require('connect'),
     escort = require('escort'),
     path = require('path'),
     static = require('node-static'),
-    HomePage = require('./homepage').HomePage;
+    HomePage = require('./ui/page/homepage').HomePage;
 
-var stylesheets = new static.Server(path.join(__dirname, 'public', 'css'));
-var images = new static.Server(path.join(__dirname, 'public', 'image'));
+var stylesheets = new static.Server(path.join(__dirname, '..', 'public', 'css'));
+var images = new static.Server(path.join(__dirname, '..', 'public', 'image'));
 
 function renderHome(req, res) {
   new HomePage().render(req, res);

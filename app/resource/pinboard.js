@@ -32,7 +32,7 @@ function obtainResources(repo) {
       var pinboard = 'http://pinboard.in/t:' + tag + '/';
 
       jsdom.env(pinboard, [
-        path.join(__dirname, 'public', 'scripts', 'jquery-1.5.2.min.js')
+        path.join(__dirname, '..', '..', 'public', 'script', 'jquery-1.5.2.min.js')
       ], function (errors, window) {
         if (errors) {
           console.warn('Unable to obtain the pinboard:', errors);
