@@ -24,11 +24,17 @@ function serveImage(req, res, params) {
   });
 }
 
+function serveEmptyContent(req, res) {
+  res.writeHead(204);
+  res.end();
+}
+
 var server = connect(
   escort(function (routes) {
     routes.get('/', renderHome);
     routes.get('/css/style.css', serveStylesheet);
     routes.get('image', '/image/{image:string}', serveImage);
+    routes.get('/favicon.ico', serveEmptyContent);
   })
 );
 server.listen(8000);

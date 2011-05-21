@@ -14,7 +14,7 @@ HomeModule.prototype.getName = function () {
 
 HomeModule.prototype.getContent = function (req) {
   var content = {};
-  content.title = 'Welded node'
+  content.title = 'Welded node';
 
   // Include the bookmarks
   var today = new Date();

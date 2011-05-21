@@ -3,23 +3,27 @@ var weld = require('weld');
 
 function bindHome(window, $, content) {
   // bind title
-  window.weld($('title')[0], content.title);
+  if ($('title')) {
+    window.weld($('title')[0], content.title);
+  }
 
   // bind bookmarks
-  window.weld($('.bookmark')[0], content.bookmarks, {
-    alias: {
-      'title': 'bookmarktitle',
-      'resource': 'bookmarkresource'
-    },
+  if ($('.bookmark')) {
+    window.weld($('.bookmark')[0], content.bookmarks, {
+      alias: {
+        'title': 'bookmarktitle',
+        'resource': 'bookmarkresource'
+      },
 
-    map: function (parent, element, key, value) {
-      if (key === 'resource') {
-        element.setAttribute('href', value);
+      map: function (parent, element, key, value) {
+        if (key === 'resource') {
+          element.setAttribute('href', value);
+        }
+
+        return true;
       }
-
-      return true;
-    }
-  });
+    });
+  }
 }
 
 function bind(window, $, content) {

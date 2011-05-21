@@ -46,9 +46,8 @@ Template.prototype.bind = function(window, $, content) {
 }
 
 Template.prototype.write = function($, res) {
-  res.writeHead(200, {'Content-Type': 'text/html'});
-  res.write('<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"\n');
-  res.write('   "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">\n');
+  res.writeHead(200, {'Content-Type': 'text/html; charset=utf-8'});
+  res.write('<!doctype html>\n');
   res.write('<html xmlns="http://www.w3.org/1999/xhtml">\n');
   res.write('<head>\n');
   res.write($('head').html());

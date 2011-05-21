@@ -48,7 +48,7 @@ function obtainResources(repo) {
             var bookmarked = when.replace('&nbsp;', '');
             var d = parseDate(bookmarked);
 
-            var k = 'pinboard:tag:' + tag + ':' + d.getTime();
+            var k = 'pinboard:tag:node.js:' + d.getTime();
             var v = resource + ' ' + title.trim();
 
             console.log('Adding', v, 'to', k);
