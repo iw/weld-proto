@@ -9,10 +9,10 @@ Building Node
 
 Following http://blog.nodejs.org/2011/04/04/development-environment/:
 
-    $ curl -O http://nodejs.org/dist/node-v0.4.7.tar.gz
-    $ tar -xvf node-v0.4.7.tar.gz 
-    $ cd node-v0.4.7
-    $ ./configure --prefix=$HOME/local/node-0.4.7 && make install
+    $ curl -O http://nodejs.org/dist/node-v0.4.8.tar.gz
+    $ tar -xvf node-v0.4.8.tar.gz 
+    $ cd node-v0.4.8
+    $ ./configure --prefix=$HOME/local/node-0.4.8 && make install
 
 
 Install npm
