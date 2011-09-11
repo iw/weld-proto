@@ -1,18 +1,19 @@
 Weld exemplar
 ====
 
-This project is a discovery of the [Weld](https://github.com/hij1nx/weld) Node template module. Its unobtrusive nature has greater appeal than the directive-driven alternatives.
+This project (Boot Welder) is a discovery of the [Weld](https://github.com/hij1nx/weld) Node template module. Its unobtrusive nature has greater appeal than the directive-driven alternatives.
 
+Boot Welder also includes [Bootstrap](https://github.com/twitter/bootstrap) for providing sweet layout.
 
 Building Node
 -------------
 
 Following http://blog.nodejs.org/2011/04/04/development-environment/:
 
-    $ curl -O http://nodejs.org/dist/node-v0.4.8.tar.gz
-    $ tar -xvf node-v0.4.8.tar.gz 
-    $ cd node-v0.4.8
-    $ ./configure --prefix=$HOME/local/node-0.4.8 && make install
+    $ curl -O http://nodejs.org/dist/node-v0.4.11.tar.gz
+    $ tar -xvf node-v0.4.11.tar.gz 
+    $ cd node-v0.4.11
+    $ ./configure --prefix=$HOME/local/node-0.4.11 && make install
 
 
 Install npm
@@ -45,20 +46,20 @@ Install:
 Performing `npm ls` currently provides:
 
 ```
-├─┬ connect@1.4.1 
-│ ├── mime@1.2.2 
-│ └── qs@0.1.0 
+├─┬ connect@1.7.0 
+│ ├── mime@1.2.3 
+│ └── qs@0.3.1 
 ├── escort@0.0.13 
-├── hiredis@0.1.10 
-├─┬ jsdom@0.2.0 
+├── hiredis@0.1.12 
+├─┬ jsdom@0.2.4 
+│ ├── contextify@0.0.5 
+│ ├── cssom@0.2.0 
 │ ├── htmlparser@1.7.3 
-│ └── request@1.9.5 
-├── redis@0.6.0 
+│ └── request@2.1.1 
+├── node-static@0.5.6 
+├── redis@0.6.7 
+├── underscore@1.1.6 
 ├── uri-js@1.2.0 
-└─┬ weld@0.2.0 
-  ├── colors@0.5.0 
-  └─┬ jsdom@0.2.0 
-    ├── htmlparser@1.7.3 
-    └── request@1.9.5 
+└── weld@0.2.1
 ```
     
