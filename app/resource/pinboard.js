@@ -32,27 +32,32 @@ function obtainResources(repo) {
       var pinboard = 'http://pinboard.in/t:' + tag + '/';
 
       jsdom.env(pinboard, [
-        path.join(__dirname, '..', '..', 'public', 'script', 'jquery-1.5.2.min.js')
+        'http://code.jquery.com/jquery.min.js'
+        // path.join(__dirname, '..', '..', 'public', 'script', 'jquery-1.6.3.min.js')
       ], function (errors, window) {
         if (errors) {
           console.warn('Unable to obtain the pinboard:', errors);
         } else {
-          window.$('a[class="bookmark_title "]').each(function () {
-            var bookmark = window.$(this);
+          var $ = window.jQuery;
+
+          $(function() {
+            window.$('a[class="bookmark_title "]').each(function () {
+              var bookmark = window.$(this);
             
-            var resource = URI.normalize(bookmark.attr('href'));
-            var title = bookmark.html();
-            // <a class="when" href="/u:.../b:..."
-            // title="2011.05.11 &nbsp; 14:44:49">1 hour ago</a>
-            var when = bookmark.nextAll('a[class="when"]').attr('title');
-            var bookmarked = when.replace('&nbsp;', '');
-            var d = parseDate(bookmarked);
+              var resource = URI.normalize(bookmark.attr('href'));
+              var title = bookmark.html();
+              // <a class="when" href="/u:.../b:..."
+              // title="2011.05.11 &nbsp; 14:44:49">1 hour ago</a>
+              var when = bookmark.nextAll('a[class="when"]').attr('title');
+              var bookmarked = when.replace('&nbsp;', '');
+              var d = parseDate(bookmarked);
 
-            var k = 'pinboard:tag:node.js:' + d.getTime();
-            var v = resource + ' ' + title.trim();
+              var k = 'pinboard:tag:node.js';
+              var v = resource + ' ' + title.trim();
 
-            console.log('Adding', v, 'to', k);
-            repo.sadd(k, v);
+              console.log('Adding', v, 'to', k);
+              repo.zadd(k, d.getTime(), v);
+            });
           });
         }
       });

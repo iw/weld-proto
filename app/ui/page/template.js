@@ -30,7 +30,7 @@ Template.prototype.render = function (content, res) {
 
   jsdom.env({
     scripts: [
-      path.join(__dirname, '..', '..', '..', 'public', 'script', 'jquery-1.5.2.min.js'),
+      path.join(__dirname, '..', '..', '..', 'public', 'script', 'jquery-1.6.3.min.js'),
       require('weld').filepath
     ],
     html: this.template,

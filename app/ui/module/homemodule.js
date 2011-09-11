@@ -17,14 +17,8 @@ HomeModule.prototype.getContent = function (req) {
   content.title = 'Welded node';
 
   // Include the bookmarks
-  var today = new Date();
-  today.setHours(0);
-  today.setMinutes(0);
-  today.setSeconds(0);
-  today.setMilliseconds(0);
-  
-  var tag = 'pinboard:tag:node.js:' + today.getTime();
-  repo.smembers(tag, function (err, resources) {
+  var tag = 'pinboard:tag:node.js';
+  repo.zrevrange(tag, 0, 15, function (err, resources) {
     if (err) {
       console.error('Unable to obtain', tag, err);
     } else {
