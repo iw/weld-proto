@@ -1,13 +1,68 @@
-<html>
+<html lang="en">
   <head>
-    <title></title>
-    <link rel="stylesheet" href="/css/style.css" type="text/css" />
+    <meta charset="utf-8">
+    <title>Boot Welder</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <link href="/css/bootstrap-1.2.0.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
+
+    <script src="/script/jquery-1.6.3.min.js"></script>
+    <script src="/script/application.js"></script>
   </head>
+
   <body>
-    <div id="bookmarks">
-      <ul>
-        <li class="bookmark"><span class="bookmarktitle">node.js</span> - <a href="http://nodejs.org/" class="bookmarkresource">http://nodejs.org/</a></li>
-      </ul>
-    </div>
+
+    <div class="topbar-wrapper">
+      <div class="topbar">
+        <div class="topbar-inner">
+          <div class="container">
+            <h3><a href="#">Boot Welder</a></h3>
+            <ul class="nav">
+              <li class="active"><a href="#">Settings</a></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle">Topics</a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">node.js</a></li>
+                  <li><a href="#">erlang</a></li>
+                </ul>
+              </li>
+            </ul>
+            <form action="">
+              <input type="text" placeholder="Search" />
+            </form>
+          </div>
+        </div><!-- /topbar-inner -->
+      </div><!-- /topbar -->
+    </div><!-- /topbar-wrapper -->
+
+    <div class="container">
+      
+      <div id="bookmarks">
+        <ul class="unstyled">
+          <li class="bookmark"><span class="bookmarktitle">node.js</span> - <strong><a href="http://nodejs.org/" class="bookmarkresource">http://nodejs.org/</a></strong></li>
+        </ul>
+      </div>
+
+      <div class="pagination">
+        <ul>
+          <li class="prev disabled"><a href="#">&#x2190; Previous</a></li>
+          <li class="active"><a href="#">1</a></li>
+          <li><a href="#">2</a></li>
+          <li><a href="#">3</a></li>
+          <li><a href="#">4</a></li>
+          <li><a href="#">5</a></li>
+          <li class="next"><a href="#">Next &#x2192;</a></li>
+        </ul>
+      </div>
+
+    </div> <!-- /container -->
+
   </body>
 </html>
